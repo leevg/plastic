@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>
+      wellcome, 
+      {% if user.is_superuser %}
+      dear admin
+      {% else %}
+      user
+      {% endif %} 
+    </h2>
+
+  <div class="login">
+       {% if user.is_authenticated %}
+          <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+           <a href="{% url 'login' %}">Login</a>
+           <a href="{% url 'signup' %}">Signup</a>
+       {% endif %}
+
+   </div>
+  <div class="row">
+    
+   
+  </div>
+
+{% endblock content %}

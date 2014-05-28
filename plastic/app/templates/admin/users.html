@@ -1,0 +1,21 @@
+{% extends "admin/base_site.html" %}
+
+{% block title %}List of users{% endblock %}
+
+{% block content %}
+<div id="content-main">
+    <a href="add/" style="float:right">Add new user</a>
+  <h1>List of users:</h1>
+  <table>
+    <tr><td>Username</td><td>First Name</td><td>Last Name</td><td>Role</td></tr>
+  {% for user in users %}
+    <tr>
+        <td><a href="{{user.id}}">{{ user.username }}</a></td>
+    <td>{{user.first_name}}</td>
+    <td>{{user.last_name}}</td>
+    <td>{% if user.is_staff %} superuser {% else %} user {% endif %}</td>
+    </tr>
+  {% endfor %}
+</table>
+</div>
+{% endblock %}
